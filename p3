@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Azhagi 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush: #f7d6e0;
+      --rose: #f2aac0;
+      --cream: #fff9f5;
+      --peach: #fde8d8;
+      --lavender: #e8dff5;
+      --sage: #d8eedf;
+      --coffee-light: #f5e6d3;
+      --coffee-mid: #c9956c;
+      --text-dark: #5a3e45;
+      --text-mid: #7d5a62;
+      --text-soft: #a07a84;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── PAGE SYSTEM ── */
+    .page {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      padding: 60px 20px 80px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page.active { display: flex; }
+
+    /* ── BACKGROUNDS ── */
+    #page1 { background: linear-gradient(135deg, #fde8f0 0%, #fff0f7 40%, #fce4d6 100%); }
+    #page2 { background: linear-gradient(135deg, var(--coffee-light) 0%, #fdf6ee 50%, #ecdfd3 100%); }
+    #page3 { background: linear-gradient(135deg, #eef4ff 0%, #f7f0ff 50%, #e8f8ef 100%); }
+    #page4 { background: linear-gradient(135deg, #fde8f0 0%, #f7f0ff 50%, #fde8d8 100%); }
+
+    /* Floating blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobFloat {
+      0%   { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-30px) scale(1.06); }
+    }
+
+    /* ── CARD ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      padding: 50px 44px 44px;
+      max-width: 640px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(180,120,140,0.12), 0 2px 8px rgba(0,0,0,0.05);
+      border: 1.5px solid rgba(255,255,255,0.9);
+      animation: fadeSlideUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.25rem;
+      color: var(--text-soft);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+      display: block;
+      animation: fadeSlideUp 0.9s 0.1s both;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 5vw, 2.7rem);
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 14px;
+      animation: fadeSlideUp 0.9s 0.2s both;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: var(--text-mid);
+      font-weight: 400;
+      margin-bottom: 24px;
+      animation: fadeSlideUp 0.9s 0.3s both;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      font-weight: 300;
+      animation: fadeSlideUp 0.9s 0.4s both;
+    }
+    .emoji-big {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 18px;
+      animation: fadeSlideUp 0.9s 0s both;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--lavender));
+      border-radius: 99px;
+      margin: 22px auto;
+      animation: fadeSlideUp 0.9s 0.35s both;
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 14px 40px;
+      background: linear-gradient(135deg, #f2aac0, #d5a5e8);
+      color: #fff;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(210,140,180,0.35);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+      text-decoration: none;
+      animation: fadeSlideUp 0.9s 0.55s both;
+    }
+    .btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 12px 32px rgba(210,140,180,0.45);
+      filter: brightness(1.05);
+    }
+    .btn:active { transform: translateY(-1px) scale(1.01); }
+
+    /* Page 2 – coffee lines */
+    .coffee-lines {
+      list-style: none;
+      margin: 10px 0;
+      animation: fadeSlideUp 0.9s 0.4s both;
+    }
+    .coffee-lines li {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #7a5540;
+      line-height: 1.9;
+      padding: 8px 0;
+      border-bottom: 1px dashed #e0c9b5;
+    }
+    .coffee-lines li:last-child { border-bottom: none; }
+
+    /* Page 3 – jokes */
+    .joke-card {
+      background: rgba(255,255,255,0.55);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin: 12px 0;
+      text-align: left;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      animation: fadeSlideUp 0.9s both;
+    }
+    .joke-card:nth-child(1) { animation-delay: 0.2s; }
+    .joke-card:nth-child(2) { animation-delay: 0.35s; }
+    .joke-card:nth-child(3) { animation-delay: 0.5s; }
+    .joke-card:nth-child(4) { animation-delay: 0.65s; }
+    .joke-card:nth-child(5) { animation-delay: 0.8s; }
+    .joke-q {
+      font-weight: 400;
+      font-size: 0.97rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .joke-a {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.1rem;
+      color: #8b5cf6;
+    }
+
+    /* Page 4 final */
+    .final-msg {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 4vw, 1.9rem);
+      color: var(--text-dark);
+      line-height: 1.5;
+      animation: fadeSlideUp 0.9s 0.3s both;
+    }
+    .hearts {
+      font-size: 2.5rem;
+      display: block;
+      margin-top: 24px;
+      animation: heartBeat 1.4s 1s infinite;
+    }
+    @keyframes heartBeat {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+
+    /* Progress dots */
+    .dots {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(200,140,160,0.35);
+      transition: all 0.3s ease;
+    }
+    .dot.active {
+      background: #f2aac0;
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <section class="page active" id="page1">
+    <div class="blob" style="width:340px;height:340px;background:#f9c0d4;top:-80px;left:-80px;animation-delay:0s;"></div>
+    <div class="blob" style="width:260px;height:260px;background:#fbd5b8;bottom:-60px;right:-40px;animation-delay:2s;"></div>
+    <div class="card">
+      <span class="emoji-big">🌸</span>
+      <span class="label">Hey Azhagi</span>
+      <h1>You have been going through a lot</h1>
+      <div class="divider"></div>
+      <h2>I wish everything shall pass soon</h2>
+      <p>
+        I know some days feel heavier than they should — like you're carrying the whole world 
+        on those tired, beautiful shoulders of yours. But here's what I want you to know: 
+        the fact that you're still here, still trying, still breathing through it all… 
+        that takes more courage than most people will ever understand.<br><br>
+        You are not weak for feeling this way. You are human, and a deeply feeling, 
+        extraordinary one at that. Every storm that has tried to break you has only shown 
+        the world how quietly strong you truly are. The sun is not gone — it's just hiding 
+        behind clouds that <em>will</em> move. And when they do, I promise the light will 
+        feel even warmer because you waited for it. 🌤️<br><br>
+        Hold on, my dear. Better days are not just coming — they are already on their way to you. 💗
+      </p>
+      <button class="btn" onclick="goTo('page2')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page" id="page2">
+    <div class="blob" style="width:300px;height:300px;background:#e8c8a8;top:-60px;right:-60px;animation-delay:1s;"></div>
+    <div class="blob" style="width:220px;height:220px;background:#f5dcc0;bottom:-40px;left:-30px;animation-delay:3s;"></div>
+    <div class="card">
+      <span class="emoji-big">☕</span>
+      <span class="label">Life & Coffee Thoughts</span>
+      <h1>Sip slowly. Feel deeply.</h1>
+      <div class="divider"></div>
+      <ul class="coffee-lines">
+        <li>Life, like coffee, is bitter before it's beautiful —<br>the first sip stings, but you keep drinking anyway.</li>
+        <li>Every hard day is just the grounds at the bottom of the cup;<br>they don't ruin the drink, they made it strong.</li>
+        <li>Some mornings you need two cups, some nights you pour it cold —<br>that's okay. Even half-finished cups held warmth once.</li>
+        <li>The sweetest coffee needs the darkest roast.<br>The sweetest life needs the hardest seasons.</li>
+      </ul>
+      <p style="margin-top:18px;font-size:0.95rem;">
+        ☕ You're being roasted right now, Azhagi — and you're going to be <em>exquisite</em>.
+      </p>
+      <button class="btn" onclick="goTo('page3')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page" id="page3">
+    <div class="blob" style="width:280px;height:280px;background:#d5b8f5;top:-50px;left:-50px;animation-delay:0.5s;"></div>
+    <div class="blob" style="width:200px;height:200px;background:#b8e8c8;bottom:-50px;right:-30px;animation-delay:2.5s;"></div>
+    <div class="card">
+      <span class="emoji-big">🎉</span>
+      <span class="label">Just for you</span>
+      <h1>Okay, laugh now 🙈</h1>
+      <div class="divider"></div>
+      <div class="joke-card">
+        <p class="joke-q">🐾 Why did the cat sit on the computer?</p>
+        <p class="joke-a">To keep an eye on the mouse! 🖱️😹</p>
+      </div>
+      <div class="joke-card">
+        <p class="joke-q">🌙 Why don't scientists trust atoms?</p>
+        <p class="joke-a">Because they make up everything — just like your excuses for not sleeping! 😴</p>
+      </div>
+      <div class="joke-card">
+        <p class="joke-q">🍕 I told my pizza a joke...</p>
+        <p class="joke-a">It was too cheesy. But honestly, so are you — and that's why we love you! 🧀💕</p>
+      </div>
+      <div class="joke-card">
+        <p class="joke-q">📚 Why did the student eat her homework?</p>
+        <p class="joke-a">Because the teacher said it was a piece of cake! 🎂</p>
+      </div>
+      <div class="joke-card">
+        <p class="joke-q">🌸 What do you call a sad flower?</p>
+        <p class="joke-a">A weeping willow — but unlike you, it has no idea how strong it is! 💪🌿</p>
+      </div>
+      <button class="btn" onclick="goTo('page4')">Next &rarr;</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page" id="page4">
+    <div class="blob" style="width:360px;height:360px;background:#f9c0d4;top:-100px;left:-100px;animation-delay:0s;"></div>
+    <div class="blob" style="width:260px;height:260px;background:#d5b8f5;bottom:-80px;right:-60px;animation-delay:2s;"></div>
+    <div class="card">
+      <span class="emoji-big">💌</span>
+      <span class="label">A little note~</span>
+      <div class="divider"></div>
+      <p class="final-msg">
+        "If this made you happy,<br>send me a smiley snap 😊"
+      </p>
+      <span class="hearts">💗🌸💗</span>
+    </div>
+  </section>
+
+  <!-- Progress dots -->
+  <div class="dots">
+    <div class="dot active" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <div class="dot" id="dot4"></div>
+  </div>
+
+  <script>
+    function goTo(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+
+      // Update dots
+      const num = parseInt(pageId.replace('page',''));
+      document.querySelectorAll('.dot').forEach((d,i) => {
+        d.classList.toggle('active', i+1 === num);
+      });
+    }
+  </script>
+</body>
+</html>
